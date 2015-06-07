@@ -265,19 +265,20 @@ namespace Sharp.Xmpp.Client {
 			}
 		}
 
-		/// <summary>
-		/// A callback method to invoke when a request for a subscription is received
-		/// from another XMPP user.
-		/// </summary>
-		/// <include file='Examples.xml' path='S22/Xmpp/Client/XmppClient[@name="SubscriptionRequest"]/*'/>
-		public SubscriptionRequest SubscriptionRequest {
-			get {
-				return im.SubscriptionRequest;
-			}
-			set {
-				im.SubscriptionRequest = value;
-			}
-		}
+        /// <summary>
+        /// The event that is raised when a subscription request has been received.
+        /// </summary>
+        public event EventHandler<SubscriptionRequestEventArgs> SubscriptionRequested
+        {
+            add
+            {
+                im.SubscriptionRequested += value;
+            }
+            remove
+            {
+                im.SubscriptionRequested -= value;
+            }
+        }
 
 		/// <summary>
 		/// The event that is raised when a status notification has been received.

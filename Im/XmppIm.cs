@@ -168,15 +168,6 @@ namespace Sharp.Xmpp.Im {
 			}
 		}
 
-		/// <summary>
-		/// A callback method to invoke when a request for a subscription is received
-		/// from another XMPP user.
-		/// </summary>
-		public SubscriptionRequest SubscriptionRequest {
-			get;
-			set;
-		}
-
         /// <summary>
         /// A callback method to invoke when a Custom Iq Request is received
         /// from another XMPP user.
@@ -186,6 +177,11 @@ namespace Sharp.Xmpp.Im {
             get;
             set;
         }
+
+        /// <summary>
+        /// The event that is raised when a subscription request has been received.
+        /// </summary>
+        public event EventHandler<SubscriptionRequestEventArgs> SubscriptionRequested;
 
 		/// <summary>
 		/// The event that is raised when a status notification from a contact has been
@@ -1564,14 +1560,9 @@ namespace Sharp.Xmpp.Im {
 		/// </summary>
 		/// <param name="presence">The presence stanza to process.</param>
 		void ProcessSubscriptionRequest(Presence presence) {
-
-           /////New Addition in order to be able to handle it via an event
-            if (SubscriptionRequest != null)
-                SubscriptionRequest.Invoke(presence.From);
-            //        == true)
-            //    ApproveSubscriptionRequest(presence.From);
-            //else
-            //    RefuseSubscriptionRequest(presence.From);
+           
+            SubscriptionRequested.Raise(this,
+                new SubscriptionRequestEventArgs(presence.From));
 		}
 
 		/// <summary>
