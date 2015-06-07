@@ -201,7 +201,7 @@ namespace Sharp.Xmpp.Extensions.Socks5 {
 		/// operation timed out.</exception>
 		void PerformGreeting() {
 			ByteBuilder b = new ByteBuilder();
-			using (var r = new BinaryReader(stream, Encoding.UTF8, true)) {
+			using (var r = new BinaryReader(stream, Encoding.UTF8)) {
 				byte[] bytes = r.ReadBytes(2);
 				b.Append(bytes);
 				// The number of method-bytes following is contained in the second byte.
@@ -226,7 +226,7 @@ namespace Sharp.Xmpp.Extensions.Socks5 {
 		/// is not a valid SOCKS5 request.</exception>
 		SocksRequest WaitForRequest() {
 			ByteBuilder b = new ByteBuilder();
-			using (var r = new BinaryReader(stream, Encoding.UTF8, true)) {
+			using (var r = new BinaryReader(stream, Encoding.UTF8)) {
 				byte[] bytes = r.ReadBytes(4);
 				b.Append(bytes);
 				ATyp atyp = (ATyp) bytes[3];

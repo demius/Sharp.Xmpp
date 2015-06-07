@@ -96,7 +96,7 @@ namespace Sharp.Xmpp.Extensions.Socks5 {
 				byte[] bytes = request.Serialize();
 				stream.Write(bytes, 0, bytes.Length);
 				ByteBuilder b = new ByteBuilder();
-				using (var r = new BinaryReader(stream, Encoding.UTF8, true)) {
+				using (var r = new BinaryReader(stream, Encoding.UTF8)) {
 					bytes = r.ReadBytes(4);
 					b.Append(bytes);
 					ATyp atyp = (ATyp) bytes[3];

@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Sharp.Xmpp</RootNamespace>
     <AssemblyName>Sharp.Xmpp</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -68,6 +69,7 @@
     <Compile Include="Client\FileTransferSettings.cs" />
     <Compile Include="Client\XmppClient.cs" />
     <Compile Include="Core\ErrorEventArgs.cs" />
+    <Compile Include="Extensions\AssemblyExtension.cs" />
     <Compile Include="Extensions\CustomExtension\CustomIqExtension.cs" />
     <Compile Include="Extensions\CustomExtension\CustomIqRequestDelegate.cs" />
     <Compile Include="Extensions\XEP-0004\DataForms.cs" />
@@ -231,7 +233,6 @@
     <None Include="packages.config" />
     <None Include="Readme.md" />
     <None Include="ReleaseNotes.md" />
-    <None Include="UPNPLib" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

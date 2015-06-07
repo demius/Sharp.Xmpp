@@ -119,14 +119,11 @@ namespace Sharp.Xmpp.Extensions {
 		public SoftwareVersion(XmppIm im)
 			: base(im) {
 			// Collect name and version attributes from the assembly's metadata.
-			Attribute attr = Assembly.GetExecutingAssembly().
-				GetCustomAttribute(typeof(AssemblyProductAttribute));
-			string name = attr != null ? ((AssemblyProductAttribute) attr).Product :
-				"Sharp.Xmpp";
-			string version = Assembly.GetExecutingAssembly().GetName().
-				Version.ToString();
-			Version = new VersionInformation(name, version,
-				Environment.OSVersion.ToString());
+			Attribute attr = Assembly.GetExecutingAssembly().GetCustomAttribute(typeof(AssemblyProductAttribute));
+
+			string name = attr != null ? ((AssemblyProductAttribute) attr).Product : "Sharp.Xmpp";
+			string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+			Version = new VersionInformation(name, version, Environment.OSVersion.ToString());
 		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using Sharp.Xmpp.Core;
+﻿using System.Collections.ObjectModel;
+using Sharp.Xmpp.Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace Sharp.Xmpp.Extensions.Dataforms {
 	/// <summary>
 	/// Represents a list of data-fields contained in a data-form.
 	/// </summary>
-	public class FieldList : IEnumerable<DataField>, IReadOnlyCollection<DataField> {
+	public class FieldList : ReadOnlyCollection<DataField>, IEnumerable<DataField> {
 		/// <summary>
 		/// The underlying XML element of the data-form.
 		/// </summary>
@@ -183,7 +184,9 @@ namespace Sharp.Xmpp.Extensions.Dataforms {
 		/// null.</exception>
 		/// <exception cref="ArgumentException">The specified element is not a
 		/// valid XML data-form.</exception>
-		public FieldList(XmlElement element, bool readOnly = false) {
+		public FieldList(XmlElement element, bool readOnly = false) 
+            : base(new List<DataField>())
+        {
 			element.ThrowIfNull("element");
 			this.element = element;
 			this.readOnly = readOnly;
